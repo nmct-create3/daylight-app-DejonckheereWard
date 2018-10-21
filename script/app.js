@@ -22,14 +22,6 @@ let updateSun = (timePassed) => {
   let sun = document.querySelector(".js-sun");
 	let bottom = 0;
 	let left = 0;
-  if (timePassed >= 99.99){
-    document.querySelector("html").classList.add("is-night");
-    document.querySelector("html").classList.remove("is-day");
-  }
-  else{
-    document.querySelector("html").classList.remove("is-night");
-    document.querySelector("html").classList.add("is-day");
-  }
   if (timePassed >= 50) {
 		bottom = 100 - timePassed;
 		left = timePassed;
@@ -39,6 +31,16 @@ let updateSun = (timePassed) => {
 		left = timePassed;
   }
   sun.style = "bottom: " + bottom + "%; left: " + left + "%;"
+  if (timePassed >= 99.99){
+    document.querySelector("html").classList.add("is-night");
+    document.querySelector("html").classList.remove("is-day");
+    sun.style.display = "none"
+  }
+  else{
+    document.querySelector("html").classList.remove("is-night");
+    document.querySelector("html").classList.add("is-day");
+    sun.style.display = "block"
+  }
 }
 // 4 Zet de zon op de juiste plaats en zorg ervoor dat dit iedere minuut gebeurt.
 let placeSunAndStartMoving = (totalMinutes, sunrise) => {
